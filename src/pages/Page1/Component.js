@@ -6,9 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import Meta from 'components/Meta';
 
 import useStyles from './styles';
+import { useStore } from "../../store";
 
 function Page1() {
   const classes = useStyles();
+  const { state, actions, effects } = useStore();
 
   return (
     <>
