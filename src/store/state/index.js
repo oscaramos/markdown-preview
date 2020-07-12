@@ -11,6 +11,12 @@ const initialState = {
   documents: {
     "doc1.md": {
       markdownText: '# Holita'
+    },
+    "doc2.md": {
+      markdownText: '# Adiosito'
+    },
+    "doc3.md": {
+      markdownText: '# NOP'
     }
   }
 };

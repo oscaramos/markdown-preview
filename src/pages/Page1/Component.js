@@ -37,13 +37,13 @@ const useStylesPage = makeStyles(() => ({
   }
 }))
 
-function Page1() {
+function Page1(props) {
   const { state, actions } = useStore();
 
   const classes = useStyles();
   const classesPage = useStylesPage()
 
-  const documentName = actions.documents.getDocumentName(0);
+  const documentName = actions.documents.getDocumentName(props.match.params.docId);
   const markDownText = state.documents[documentName].markdownText;
 
   const onChangeEditor = (newValue) => {
