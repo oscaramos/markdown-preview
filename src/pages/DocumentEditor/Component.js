@@ -1,11 +1,8 @@
 import React from 'react';
 import Markdown from "react-markdown";
-
-import Container from '@material-ui/core/Container';
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import useStyles from './styles';
 
 import Meta from 'components/Meta';
 import CodeEditor from "../../components/CodeEditor";
@@ -40,8 +37,7 @@ const useStylesPage = makeStyles(() => ({
 function Page1(props) {
   const { state, actions } = useStore();
 
-  const classes = useStyles();
-  const classesPage = useStylesPage()
+  const classes = useStylesPage()
 
   const documentId = props.match.params.docId;
   const documentName = actions.documents.getDocumentName(documentId);
@@ -64,10 +60,10 @@ function Page1(props) {
         title='Page 1'
         description='Page 1'
       />
-      <Container maxWidth='lg' className={classes.root}>
-        <Grid container direction='row' className={classesPage.container}>
+      {/*<Container maxWidth='lg' className={classes.root}>*/}
+        <Grid container direction='row' className={classes.container}>
           <Grid item container> {/* Hacky */}
-            <TextField label='Document name' value={documentName} className={classesPage.documentNameInput}
+            <TextField label='Document name' value={documentName} className={classes.documentNameInput}
                        onChange={(e) => onChangeDocumentName(e.target.value)} />
           </Grid>
           <Grid item container direction='row'>
@@ -75,13 +71,13 @@ function Page1(props) {
               <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText} themeMode={themeMode} />
             </Grid>
             <Grid item xs={6}>
-              <div className={classesPage.convertedContainer} style={{ backgroundColor: themeMode === 'dark'? '#44475A': '#ffffff' }}>
+              <div className={classes.convertedContainer} style={{ backgroundColor: themeMode === 'dark'? '#44475A': '#ffffff' }}>
                 <Markdown source={markDownText} />
               </div>
             </Grid>
           </Grid>
         </Grid>
-      </Container>
+      {/*</Container>*/}
     </>
   );
 }
