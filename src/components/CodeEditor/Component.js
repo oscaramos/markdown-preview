@@ -10,7 +10,6 @@ export default class CodeEditor extends Component {
     this.props.onChangeEditor(newValue)
   }
   render() {
-    console.log(this.props.className);
     return (
       <ReactAce
         mode="markdown"

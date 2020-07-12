@@ -47,11 +47,18 @@ const notifications = {
     state.notifications = state.notifications.filter(
       notification => notification.options.key !== key,
     );
-  },
+  }
 };
+
+const documents = {
+  modify({ state }, newText) {
+    state.documents[0].markdownText = newText
+  }
+}
 
 export {
   theme,
   sw,
   notifications,
+  documents
 };

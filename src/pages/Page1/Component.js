@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
+import Markdown from "react-markdown";
 
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import useStyles from './styles';
 
 import Meta from 'components/Meta';
-
-import useStyles from './styles';
 import CodeEditor from "../../components/CodeEditor";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-
-import Markdown from "react-markdown";
-import TextField from "@material-ui/core/TextField";
+import { useStore } from "../../store";
 
 const codeEditorStyle = {
   width: '100%',
@@ -42,12 +40,16 @@ const useStylesPage = makeStyles(() => ({
 function Page1() {
   const classes = useStyles();
   const classesPage = useStylesPage()
-  const [markDownText, setMarkDownText] = useState('');
   const [documentName, setDocumentName] = useState('doc1.md');
 
+  const { state, actions, effects } = useStore();
+
   const onChangeEditor = (newValue) => {
-    setMarkDownText(newValue);
+    // Set markdown text
+    actions.documents.modify(newValue);
   }
+
+  const markDownText = state.documents[0].markdownText;
 
   return (
     <>
