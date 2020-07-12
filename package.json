@@ -13,10 +13,12 @@
     "overmind": "^24.1.1",
     "overmind-react": "^25.1.1",
     "react": "^16.13.1",
+    "react-ace-editor": "0.0.3",
     "react-dom": "^16.13.1",
     "react-error-boundary": "^2.2.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.10.0",
+    "react-markdown": "^4.3.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "uuid": "^8.2.0"
