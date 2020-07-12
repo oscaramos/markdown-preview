@@ -8,7 +8,7 @@ const routes = [
   },
   {
     exact: true,
-    component: asyncComponentLoader(_ => import('pages/Page1')),
+    component: asyncComponentLoader(_ => import('pages/DocumentEditor')),
     path: '/document/:docId',
   },
   {

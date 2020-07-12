@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Markdown from "react-markdown";
 
 import Container from '@material-ui/core/Container';
@@ -49,7 +49,7 @@ function Page1(props) {
 
   const onChangeEditor = (newValue) => {
     // Set markdown text
-    actions.documents.setMarkdownText(newValue);
+    actions.documents.setMarkdownText({ documentId, newDocumentText: newValue });
   }
 
   const onChangeDocumentName = (newValue) => {

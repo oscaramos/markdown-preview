@@ -51,9 +51,9 @@ const notifications = {
 };
 
 const documents = {
-  setMarkdownText({ state, actions }, newText) {
-    const documentName = actions.documents.getDocumentName(0)
-    state.documents[documentName].markdownText = newText
+  setMarkdownText({ state, actions }, { documentId, newDocumentText}) {
+    const documentName = actions.documents.getDocumentName(documentId)
+    state.documents[documentName].markdownText = newDocumentText
   },
 
   setDocumentName({ state, actions }, { documentId, newDocumentName } ) {
