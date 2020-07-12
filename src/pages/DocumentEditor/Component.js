@@ -57,6 +57,7 @@ function Page1(props) {
     actions.documents.setDocumentName({ documentId, newDocumentName: newValue });
   }
 
+  let themeMode = state.theme.mode;
   return (
     <>
       <Meta
@@ -71,10 +72,10 @@ function Page1(props) {
           </Grid>
           <Grid item container direction='row'>
             <Grid item xs={6}>
-              <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText} themeMode={state.theme.mode} />
+              <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText} themeMode={themeMode} />
             </Grid>
             <Grid item xs={6}>
-              <div className={classesPage.convertedContainer}>
+              <div className={classesPage.convertedContainer} style={{ backgroundColor: themeMode === 'dark'? '#44475A': '#ffffff' }}>
                 <Markdown source={markDownText} />
               </div>
             </Grid>
