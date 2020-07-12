@@ -53,7 +53,7 @@ function Menu({ isOpen, onClose, onOpen }) {
         {
           Object.keys(state.documents).map((doc, index) => {
             return (
-              <StyledMenuItem onClick={onClose} component={RouterLink} to={`/page-1/${index}`}>
+              <StyledMenuItem key={index} onClick={onClose} component={RouterLink} to={`/page-1/${index}`}>
                 <ListItemIcon>
                   <DescriptionIcon fontSize="small"/>
                 </ListItemIcon>

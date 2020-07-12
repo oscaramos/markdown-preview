@@ -43,7 +43,8 @@ function Page1(props) {
   const classes = useStyles();
   const classesPage = useStylesPage()
 
-  const documentName = actions.documents.getDocumentName(props.match.params.docId);
+  const documentId = props.match.params.docId;
+  const documentName = actions.documents.getDocumentName(documentId);
   const markDownText = state.documents[documentName].markdownText;
 
   const onChangeEditor = (newValue) => {
@@ -53,7 +54,7 @@ function Page1(props) {
 
   const onChangeDocumentName = (newValue) => {
     // Set document name
-    actions.documents.setDocumentName(newValue);
+    actions.documents.setDocumentName({ documentId, newDocumentName: newValue });
   }
 
 

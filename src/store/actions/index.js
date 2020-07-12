@@ -1,4 +1,4 @@
-import { themePair, notifications as notificationsDefoults } from 'config';
+import { notifications as notificationsDefoults, themePair } from 'config';
 
 const theme = {
   toggle({ effects, state }) {
@@ -56,17 +56,22 @@ const documents = {
     state.documents[documentName].markdownText = newText
   },
 
-  setDocumentName({ state, actions }, newDocumentName) {
+  setDocumentName({ state, actions }, props ) {
     const renameProperty = (o, newKey, oldKey) => {
-      if (oldKey !== newKey) {
-        Object.defineProperty(o, newKey,
-          Object.getOwnPropertyDescriptor(o, oldKey));
-        delete o[oldKey];
-      }
+      return Object.keys(o).reduce((acc, key) => {
+        if (key !== oldKey) {
+          acc[key] = o[key];
+        } else {
+          acc[newKey] = o[key]
+        }
+        return acc
+      }, {});
     }
 
-    const documentName = actions.documents.getDocumentName(0)
-    renameProperty(state.documents, newDocumentName, documentName)
+    const {documentId, newDocumentName} = props
+
+    const documentName = actions.documents.getDocumentName(documentId)
+    state.documents = renameProperty(state.documents, newDocumentName, documentName)
   },
 
   getDocumentName({ state }, index) {
