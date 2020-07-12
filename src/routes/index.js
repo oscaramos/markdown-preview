@@ -9,7 +9,7 @@ const routes = [
   {
     exact: true,
     component: asyncComponentLoader(_ => import('pages/Page1')),
-    path: '/page-1/:docId',
+    path: '/document/:docId',
   },
   {
     component: asyncComponentLoader(_ => import('components/NotFound')),

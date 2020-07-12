@@ -11,9 +11,15 @@ import Meta from 'components/Meta';
 
 import useStyles from './styles';
 
+import { useHistory } from 'react-router-dom'
+
 function Welcome() {
   const matchSmallScreen = useMediaQuery('(max-width: 600px)');
   const classes = useStyles({ isSmallScreen: matchSmallScreen });
+
+  // Redirect to the first page
+  const history = useHistory()
+  history.push('/document/0')
 
   return (
     <>
@@ -28,7 +34,7 @@ function Welcome() {
             variant={matchSmallScreen ? 'h4' : 'h3'}
             className={classes.title}
           >
-            React PWA
+            Redirecting to Markdown Pages
           </Typography>
         </Box>
       </Container>

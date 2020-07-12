@@ -23,6 +23,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
 const StyledMenuItem = withStyles({ root: { width: '100%' } })(props => <MenuItem {...props} />);
+const StyledMenuItemWithoutHover = withStyles({ root: {"&:hover": {backgroundColor: 'white', cursor: 'default'} } })(props => <StyledMenuItem {...props} />)
 
 function Menu({ isOpen, onClose, onOpen, location, history }) {
   const classes = useStyles({
@@ -45,7 +46,7 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
       // If it's the last document
       if( selectedDocument === numDocuments - 1) {
         // Go to the new last document
-        history.push(`/page-1/${selectedDocument-1}`)
+        history.push(`/document/${selectedDocument-1}`)
       }
       actions.documents.deleteDocument(selectedDocument)
     }
@@ -62,18 +63,15 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
     >
       <List className={classes.list}>
         <div className={classes.toolbar} />
-        <StyledMenuItem onClick={onClose} component={RouterLink} to='/'>
-          <ListItemIcon>
-            <WelcomeIcon />
-          </ListItemIcon>
-          <ListItemText primary='Welcome' />
-        </StyledMenuItem>
+        <StyledMenuItemWithoutHover onClick={onClose} component={RouterLink} to='/' >
+          <ListItemText primary='Documents' />
+        </StyledMenuItemWithoutHover>
         {/* ----- Documents ----- */}
         {
           Object.keys(state.documents).map((doc, index) => {
             return (
               <StyledMenuItem selected={index === selectedDocument} key={index} component={RouterLink}
-                              to={`/page-1/${index}`}>
+                              to={`/document/${index}`}>
                 <ListItemIcon>
                   <DescriptionIcon fontSize='small' />
                 </ListItemIcon>
