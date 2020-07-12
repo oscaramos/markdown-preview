@@ -51,8 +51,26 @@ const notifications = {
 };
 
 const documents = {
-  modify({ state }, newText) {
-    state.documents[0].markdownText = newText
+  setMarkdownText({ state, actions }, newText) {
+    const documentName = actions.documents.getDocumentName(0)
+    state.documents[documentName].markdownText = newText
+  },
+
+  setDocumentName({ state, actions }, newDocumentName) {
+    const renameProperty = (o, newKey, oldKey) => {
+      if (oldKey !== newKey) {
+        Object.defineProperty(o, newKey,
+          Object.getOwnPropertyDescriptor(o, oldKey));
+        delete o[oldKey];
+      }
+    }
+
+    const documentName = actions.documents.getDocumentName(0)
+    renameProperty(state.documents, newDocumentName, documentName)
+  },
+
+  getDocumentName({ state }, index) {
+    return Object.keys(state.documents)[index]
   }
 }
 

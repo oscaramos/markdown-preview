@@ -38,18 +38,24 @@ const useStylesPage = makeStyles(() => ({
 }))
 
 function Page1() {
+  const { state, actions } = useStore();
+
   const classes = useStyles();
   const classesPage = useStylesPage()
-  const [documentName, setDocumentName] = useState('doc1.md');
 
-  const { state, actions, effects } = useStore();
+  const documentName = actions.documents.getDocumentName(0);
+  const markDownText = state.documents[documentName].markdownText;
 
   const onChangeEditor = (newValue) => {
     // Set markdown text
-    actions.documents.modify(newValue);
+    actions.documents.setMarkdownText(newValue);
   }
 
-  const markDownText = state.documents[0].markdownText;
+  const onChangeDocumentName = (newValue) => {
+    // Set document name
+    actions.documents.setDocumentName(newValue);
+  }
+
 
   return (
     <>
@@ -61,11 +67,11 @@ function Page1() {
         <Grid container direction='row' className={classesPage.container}>
           <Grid item container> {/* Hacky */}
             <TextField label='Document name' value={documentName} className={classesPage.documentNameInput}
-            onChange={(e) => setDocumentName(e.target.value)} />
+                       onChange={(e) => onChangeDocumentName(e.target.value)} />
           </Grid>
           <Grid item container direction='row'>
             <Grid item xs={6}>
-              <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} />
+              <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText} />
             </Grid>
             <Grid item xs={6}>
               <div className={classesPage.convertedContainer}>

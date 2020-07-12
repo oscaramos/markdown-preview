@@ -8,11 +8,11 @@ const initialState = {
     registration: null,
   },
   notifications: [],
-  documents: [
-    {
+  documents: {
+    "doc1.md": {
       markdownText: '# Holita'
     }
-  ]
+  }
 };
 
 export { initialState };
