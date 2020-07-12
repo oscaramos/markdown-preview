@@ -56,7 +56,7 @@ const documents = {
     state.documents[documentName].markdownText = newText
   },
 
-  setDocumentName({ state, actions }, props ) {
+  setDocumentName({ state, actions }, { documentId, newDocumentName } ) {
     const renameProperty = (o, newKey, oldKey) => {
       return Object.keys(o).reduce((acc, key) => {
         if (key !== oldKey) {
@@ -67,8 +67,6 @@ const documents = {
         return acc
       }, {});
     }
-
-    const {documentId, newDocumentName} = props
 
     const documentName = actions.documents.getDocumentName(documentId)
     state.documents = renameProperty(state.documents, newDocumentName, documentName)
@@ -85,6 +83,18 @@ const documents = {
         markdownText: '# Nuevo documento'
       }
     }
+  },
+
+  deleteDocument({ state }, documentId) {
+    // Remove property
+    const newDocuments = Object.keys(state.documents).reduce((acc, key, index) => {
+      if (index !== documentId) {
+        acc[key] = (state.documents)[key];
+      }
+      return acc
+    }, {})
+
+    state.documents = newDocuments
   }
 }
 

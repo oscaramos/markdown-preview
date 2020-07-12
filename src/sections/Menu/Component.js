@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
@@ -7,13 +7,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, withRouter } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import {
-  FaHome as WelcomeIcon,
-} from 'react-icons/fa';
+import { FaHome as WelcomeIcon, } from 'react-icons/fa';
 
 import DescriptionIcon from '@material-ui/icons/Description';
 
@@ -26,7 +24,7 @@ import Grid from "@material-ui/core/Grid";
 
 const StyledMenuItem = withStyles({ root: { width: '100%' } })(props => <MenuItem {...props} />);
 
-function Menu({ isOpen, onClose, onOpen }) {
+function Menu({ isOpen, onClose, onOpen, location, history }) {
   const classes = useStyles({
     isOpen,
     isMobile,
@@ -34,13 +32,24 @@ function Menu({ isOpen, onClose, onOpen }) {
 
   const { state, actions } = useStore()
 
-  function handleAddDocument() {
-    actions.documents.addDocument()
-  }
+  const paramDocId = location.pathname.split('/')[location.pathname.split('/').length - 1];
+  const selectedDocument = parseInt(paramDocId)
 
-  function handleDeleteDocument() {
-    // actions.documents.addDocument()
-  }
+  const handleAddDocument = () => {
+    actions.documents.addDocument()
+  };
+
+  const handleDeleteDocument = () => {
+    const numDocuments = Object.keys(state.documents).length
+    if( numDocuments > 1 ) {
+      // If it's the last document
+      if( selectedDocument === numDocuments - 1) {
+        // Go to the new last document
+        history.push(`/page-1/${selectedDocument-1}`)
+      }
+      actions.documents.deleteDocument(selectedDocument)
+    }
+  };
 
   return (
     <SwipeableDrawer
@@ -63,7 +72,8 @@ function Menu({ isOpen, onClose, onOpen }) {
         {
           Object.keys(state.documents).map((doc, index) => {
             return (
-              <StyledMenuItem key={index} component={RouterLink} to={`/page-1/${index}`}>
+              <StyledMenuItem selected={index === selectedDocument} key={index} component={RouterLink}
+                              to={`/page-1/${index}`}>
                 <ListItemIcon>
                   <DescriptionIcon fontSize='small' />
                 </ListItemIcon>
@@ -90,4 +100,4 @@ function Menu({ isOpen, onClose, onOpen }) {
   );
 }
 
-export default Menu;
+export default withRouter(Menu);
