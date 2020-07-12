@@ -4,11 +4,12 @@ import clsx from 'clsx'
 
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import Meta from 'components/Meta';
 import CodeEditor from "../../components/CodeEditor";
 import { useStore } from "../../store";
+import { useMediaQuery } from "@material-ui/core";
 
 const drawerWidth = 251
 
@@ -38,7 +39,7 @@ const useStylesPage = makeStyles((theme) => ({
   },
   convertedContainer: {
     width: '100%',
-    height: '100vh',
+    // height: '100vh',
     backgroundColor: 'white',
     overflowX: 'scroll',
     overflowY: 'scroll',
@@ -47,11 +48,16 @@ const useStylesPage = makeStyles((theme) => ({
   },
   documentNameInput: {
     width: '100%'
+  },
+  codeEditorAndResultContainer: {
+    height: '100vh',
   }
 }))
 
 function Page1(props) {
   const { state, actions } = useStore();
+  const theme = useTheme()
+  const matchXS = useMediaQuery(theme.breakpoints.down('xs'))
 
   const classes = useStylesPage()
 
@@ -85,15 +91,21 @@ function Page1(props) {
           <TextField label='Document name' value={documentName} className={classes.documentNameInput}
                      onChange={(e) => onChangeDocumentName(e.target.value)} />
         </Grid>
-        <Grid item container direction='row'>
-          <Grid item xs={6}>
-            <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText} themeMode={themeMode} />
+        <Grid item container direction='row' className={classes.codeEditorAndResultContainer}>
+          <Grid item xs={12} sm={6}>
+            <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText}
+                        themeMode={themeMode} />
           </Grid>
-          <Grid item xs={6}>
-            <div className={classes.convertedContainer} style={{ backgroundColor: themeMode === 'dark'? '#44475A': '#ffffff' }}>
-              <Markdown source={markDownText} />
-            </div>
-          </Grid>
+          {
+            matchXS ? <></>
+              :
+              <Grid item xs={0} sm={6}>
+                <div className={classes.convertedContainer}
+                     style={{ backgroundColor: themeMode === 'dark' ? '#44475A' : '#ffffff' }}>
+                  <Markdown source={markDownText} />
+                </div>
+              </Grid>
+          }
         </Grid>
       </Grid>
     </>
