@@ -78,7 +78,7 @@ const documents = {
 
   addDocument({ state }) {
     const numberOfDocuments = Object.keys(state.documents).length;
-    state.documents = {...state.documents,
+    state.documents = {...state.documents, // Hidden bug!
       [`doc${numberOfDocuments + 1}.md`]: {
         markdownText: '# Nuevo documento'
       }
