@@ -13,7 +13,7 @@ import { useStore } from "../../store";
 
 const codeEditorStyle = {
   width: '100%',
-  height: '100%',
+  height: '90%',
   padding: 0,
   overflowY: 'scroll'
 }
@@ -56,7 +56,6 @@ function Page1(props) {
     // Set document name
     actions.documents.setDocumentName({ documentId, newDocumentName: newValue });
   }
-
 
   return (
     <>
