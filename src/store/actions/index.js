@@ -98,9 +98,19 @@ const documents = {
   }
 }
 
+const drawer = {
+  setDrawerOpen({ state }, isOpen) {
+    state.drawer.open = isOpen
+  },
+  toggle({ state }) {
+    state.drawer.open = !state.drawer.open
+  }
+}
+
 export {
   theme,
   sw,
   notifications,
-  documents
+  documents,
+  drawer
 };

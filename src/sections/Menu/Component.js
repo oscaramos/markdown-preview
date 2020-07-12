@@ -21,6 +21,7 @@ import useStyles from './styles';
 import { useStore } from "../../store";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import Toolbar from "@material-ui/core/Toolbar";
 
 const StyledMenuItem = withStyles({ root: { width: '100%' } })(props => <MenuItem {...props} />);
 const StyledMenuItemWithoutHover = withStyles({ root: {"&:hover": {backgroundColor: 'white', cursor: 'default'} } })(props => <StyledMenuItem {...props} />)
@@ -60,6 +61,8 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
       onOpen={onOpen}
       swipeAreaWidth={30}
       disableBackdropTransition={true}
+      variant='persistent'
+      edge='start'
     >
       <List className={classes.list}>
         <div className={classes.toolbar} />

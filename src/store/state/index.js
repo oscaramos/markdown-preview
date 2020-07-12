@@ -20,6 +20,9 @@ const initialState = {
     "doc3.md": {
       markdownText: '# Document 3'
     }
+  },
+  drawer: {
+    open: false
   }
 };
 

@@ -9,12 +9,16 @@ import DividerMU from '@material-ui/core/Divider';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 
+import clsx from "clsx";
+
 import {
   FaBrush as BrushIcon,
   FaRedo as RedoIcon,
   FaBars as MenuIcon,
   FaGithub as GithubIcon,
 } from 'react-icons/fa';
+
+import CloseIcon from '@material-ui/icons/Close';
 
 import Link from 'components/Link';
 
@@ -30,7 +34,7 @@ const Divider = withStyles({
   },
 })(props => <DividerMU flexItem orientation="vertical" {...props} />);
 
-function AppBar_({ isMenuOpen, onMenuOpen }) {
+function AppBar_({ isMenuOpen, onMenuToggle }) {
   const classes = useStyles();
   const { state, actions } = useStore();
 
@@ -45,7 +49,9 @@ function AppBar_({ isMenuOpen, onMenuOpen }) {
   return (
     <AppBar
       position="absolute"
-      className={classes.appBar}
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: isMenuOpen
+      })}
       color="transparent"
       elevation={1}
     >
@@ -54,9 +60,11 @@ function AppBar_({ isMenuOpen, onMenuOpen }) {
           <IconButton
             edge="start"
             aria-label="open menu"
-            onClick={onMenuOpen}
+            onClick={onMenuToggle}
           >
-            <MenuIcon />
+            {
+              isMenuOpen ? <CloseIcon /> : <MenuIcon />
+            }
           </IconButton>
           <Link to="/">
             <Button aria-label="go to home" className={classes.title}>
@@ -85,7 +93,7 @@ function AppBar_({ isMenuOpen, onMenuOpen }) {
               rel="noreferrer"
               href={repository}
             >
-              <GithubIcon /> 
+              <GithubIcon />
             </IconButton>
           </Tooltip>
           <Divider />
