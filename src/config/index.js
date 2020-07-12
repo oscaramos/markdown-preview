@@ -1,11 +1,11 @@
 import { isMobile } from 'utils';
 
 /* set your data here */
-const email = 'super-email-of-the-auther@gmail.com';
-const domain = 'your-project-domain.com'
+const email = 'oscar.ramos@ucsp.edu.pe';
+const domain = 'i-dont-have-domain-yet.com'
 /* ***************** */
 
-const repository = 'https://github.com/suren-atoyan/react-pwa';
+const repository = 'https://github.com/oscaramos/markdown-preview';
 
 const messages = {
   app: {
@@ -69,7 +69,7 @@ const cancelationMessage = 'operation is manually canceled';
 
 const dateFormat = 'MMMM DD, YYYY';
 
-const title = 'React PWA';
+const title = 'Markdown Preview';
 
 const themePair = ['dark', 'light'];
 

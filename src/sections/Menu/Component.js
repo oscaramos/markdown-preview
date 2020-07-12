@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
@@ -11,8 +11,6 @@ import { Link as RouterLink, withRouter } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { FaHome as WelcomeIcon, } from 'react-icons/fa';
-
 import DescriptionIcon from '@material-ui/icons/Description';
 
 import { isMobile } from 'utils';
@@ -21,7 +19,6 @@ import useStyles from './styles';
 import { useStore } from "../../store";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
 
 const StyledMenuItem = withStyles({ root: { width: '100%' } })(props => <MenuItem {...props} />);
 const StyledMenuItemWithoutHover = withStyles({ root: {"&:hover": {backgroundColor: 'white', cursor: 'default'} } })(props => <StyledMenuItem {...props} />)

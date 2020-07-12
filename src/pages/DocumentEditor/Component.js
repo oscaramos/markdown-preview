@@ -75,8 +75,8 @@ function Page1(props) {
   return (
     <>
       <Meta
-        title='Page 1'
-        description='Page 1'
+        title='Document editor'
+        description='Document editor'
       />
       <Grid container direction='row' className={clsx(classes.container, {
         [classes.containerShift]: openDrawer
