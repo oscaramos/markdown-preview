@@ -12,7 +12,7 @@ Convert Github flavored markdown into HTML code.
 ## Bonus features
 
 -   [x] User can see the resulting `HTML` updated automatically when the markdown `textarea` is changed
--   [ ] When closing the browser window the markdown formatted text will be stored in `localStorage` and when the User returns, the data will be retrieved and displayed
+-   [x] When closing the browser window the markdown formatted text will be stored in `localStorage` and when the User returns, the data will be retrieved and displayed
 -   [ ] User can click a button and the content of the box is saved to the `clipboard`
 
 ## Useful links and resources

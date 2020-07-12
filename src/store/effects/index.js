@@ -27,6 +27,22 @@ const theme = {
   },
 };
 
+const document = {
+  lsSave(documents) {
+    const serializedDocuments = Object.entries(documents).reduce(
+      (acc, doc) => {
+        return {
+          ...acc,
+          [doc[0]]: {
+            markdownText: doc[1].markdownText
+          }
+        }
+    }, {})
+
+    localStorage.setItem('documents', JSON.stringify(serializedDocuments))
+  }
+}
+
 const genUUID = uuidv1;
 
-export { sw, theme, genUUID };
+export { sw, theme, genUUID, document };

@@ -51,9 +51,10 @@ const notifications = {
 };
 
 const documents = {
-  setMarkdownText({ state, actions }, { documentId, newDocumentText}) {
+  setMarkdownText({ state, actions, effects }, { documentId, newDocumentText}) {
     const documentName = actions.documents.getDocumentName(documentId)
     state.documents[documentName].markdownText = newDocumentText
+    effects.document.lsSave(state.documents);
   },
 
   setDocumentName({ state, actions }, { documentId, newDocumentName } ) {
