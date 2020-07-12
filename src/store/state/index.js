@@ -1,3 +1,5 @@
+import TemplateDocument1 from "./TemplateDocument1";
+
 const initialState = {
   theme: {
     mode: localStorage.getItem('theme-mode') || 'dark',
@@ -10,13 +12,13 @@ const initialState = {
   notifications: [],
   documents: {
     "doc1.md": {
-      markdownText: '# Holita'
+      markdownText: TemplateDocument1
     },
     "doc2.md": {
-      markdownText: '# Adiosito'
+      markdownText: '# Document 2'
     },
     "doc3.md": {
-      markdownText: '# NOP'
+      markdownText: '# Document 3'
     }
   }
 };
