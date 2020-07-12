@@ -76,6 +76,15 @@ const documents = {
 
   getDocumentName({ state }, index) {
     return Object.keys(state.documents)[index]
+  },
+
+  addDocument({ state }) {
+    const numberOfDocuments = Object.keys(state.documents).length;
+    state.documents = {...state.documents,
+      [`doc${numberOfDocuments + 1}.md`]: {
+        markdownText: '# Nuevo documento'
+      }
+    }
   }
 }
 
