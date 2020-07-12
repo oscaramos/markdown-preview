@@ -5,22 +5,24 @@ export default class CodeEditor extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
-    this.state = {
-      onChangeToParent: props.onChange
-    }
   }
   onChange(newValue) {
-    this.state.onChangeToParent(newValue)
+    this.props.onChangeEditor(newValue)
   }
   render() {
     console.log(this.props.className);
     return (
       <ReactAce
         mode="markdown"
-        theme="textmate"
+        theme="eclipse"
         setReadOnly={false}
         onChange={this.onChange}
-        ref={instance => { this.ace = instance; }} // Let's put things into scope
+        // Let's put things into scope
+        ref={instance => {
+          this.ace = instance;
+          const editor = this.ace.editor;
+          editor.setShowPrintMargin(false); // Removes annoying vertical bar
+        }}
         {...this.props}
       />
     );

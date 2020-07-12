@@ -40,7 +40,6 @@ function Page1() {
   const [markDownText, setMarkDownText] = useState('');
 
   const onChangeEditor = (newValue) => {
-    console.log(newValue);
     setMarkDownText(newValue);
   }
 
@@ -53,7 +52,7 @@ function Page1() {
       <Container maxWidth="lg" className={classes.root}>
         <Grid container direction='row' className={classesPage.container}>
           <Grid item xs={6}>
-            <CodeEditor onChange={onChangeEditor} style={codeEditorStyle}/>
+            <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle}/>
           </Grid>
           <Grid item xs={6}>
             <div className={classesPage.convertedContainer}>
