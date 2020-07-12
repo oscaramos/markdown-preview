@@ -9,11 +9,26 @@ export default class CodeEditor extends Component {
   onChange(newValue) {
     this.props.onChangeEditor(newValue)
   }
+  getTheme(themeMode) {
+    return themeMode === 'dark' ? 'dracula' : 'eclipse'
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // On change theme mode, update editor
+    if(this.props.themeMode !== prevProps.themeMode) {
+      const editor = this.ace.editor;
+      const themeMode = this.props.themeMode;
+
+      const theme = this.getTheme(themeMode)
+      require(`brace/theme/${theme}`);
+      editor.setTheme(`ace/theme/${theme}`)
+    }
+  }
   render() {
+    const themeMode = this.props.themeMode;
     return (
       <ReactAce
         mode="markdown"
-        theme="eclipse"
+        theme={this.getTheme(themeMode)}
         setReadOnly={false}
         onChange={this.onChange}
         // Let's put things into scope

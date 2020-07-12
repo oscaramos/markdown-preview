@@ -71,7 +71,7 @@ function Page1(props) {
           </Grid>
           <Grid item container direction='row'>
             <Grid item xs={6}>
-              <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText} />
+              <CodeEditor onChangeEditor={onChangeEditor} style={codeEditorStyle} setValue={markDownText} themeMode={state.theme.mode} />
             </Grid>
             <Grid item xs={6}>
               <div className={classesPage.convertedContainer}>
