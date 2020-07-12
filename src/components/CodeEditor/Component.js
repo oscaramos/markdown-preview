@@ -20,8 +20,10 @@ export default class CodeEditor extends Component {
         // Let's put things into scope
         ref={instance => {
           this.ace = instance;
-          const editor = this.ace.editor;
-          editor.setShowPrintMargin(false); // Removes annoying vertical bar
+          if(instance) { // On updates this is null
+            const editor = this.ace.editor;
+            editor.setShowPrintMargin(false); // Removes annoying vertical bar
+          }
         }}
         {...this.props}
       />

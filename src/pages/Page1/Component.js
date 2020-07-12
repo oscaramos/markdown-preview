@@ -15,7 +15,8 @@ import Markdown from "react-markdown";
 const codeEditorStyle = {
   width: '100%',
   height: '100%',
-  padding: 0
+  padding: 0,
+  overflowY: 'scroll'
 }
 
 const useStylesPage = makeStyles(() => ({
