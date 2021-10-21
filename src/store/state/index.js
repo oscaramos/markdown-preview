@@ -2,7 +2,7 @@ import initialDocuments from "./InitialDocuments";
 
 const initialState = {
   theme: {
-    mode: localStorage.getItem('theme-mode') || 'dark',
+    mode: localStorage.getItem('theme-mode') || 'light',
   },
   sw: {
     isInitialized: false,
