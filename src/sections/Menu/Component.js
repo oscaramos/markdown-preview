@@ -46,6 +46,10 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
 
   const handleEditTitle = async (documentId) => {
     try {
+      const oldTitle = state.documents.find(
+        (document) => document.id === documentId
+      )["title"];
+
       await confirm({
         title: "Edit title",
         confirmationText: "Edit",
@@ -59,6 +63,7 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
             label="New title"
             fullWidth
             variant="standard"
+            defaultValue={oldTitle}
             onChange={(e) => (newTitle.current = e.target.value)}
           />
         ),
