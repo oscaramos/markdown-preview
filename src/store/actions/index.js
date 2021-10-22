@@ -46,12 +46,12 @@ const documents = {
     effects.document.lsSave(state.documents);
   },
 
-  addDocument({ state, effects }) {
+  addDocument({ state, effects }, { title }) {
     state.documents = [
       ...state.documents,
       {
         id: uuidv4(),
-        title: "title getted by modal",
+        title,
         markdownText: "New document",
       },
     ];

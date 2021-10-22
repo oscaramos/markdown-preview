@@ -1,10 +1,8 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
+import routes from "routes";
 
 import Page from "components/Page";
-
-import { Switch, Route } from "react-router-dom";
-
-import routes from "routes";
 
 function Content() {
   return (

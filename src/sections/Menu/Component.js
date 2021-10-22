@@ -1,28 +1,25 @@
-import React from "react";
+import { IconButton, TextField } from "@material-ui/core";
 import { last } from "lodash";
-
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import List from "@material-ui/core/List";
-import MenuItem from "@material-ui/core/MenuItem";
-
+import { useConfirm } from "material-ui-confirm";
+import React from "react";
 import { Link as RouterLink, withRouter } from "react-router-dom";
-
-import { withStyles } from "@material-ui/core/styles";
-
-import EditIcon from "@material-ui/icons/Edit";
-import DescriptionIcon from "@material-ui/icons/Description";
-
 import { isMobile } from "utils";
 
-import useStyles from "./styles";
-import { useStore } from "../../store";
+import DeleteIcon from "@material-ui/icons/Delete";
+import DescriptionIcon from "@material-ui/icons/Description";
+import EditIcon from "@material-ui/icons/Edit";
+
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import { IconButton, TextField } from "@material-ui/core";
-import { useConfirm } from "material-ui-confirm";
+import List from "@material-ui/core/List";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuItem from "@material-ui/core/MenuItem";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import { withStyles } from "@material-ui/core/styles";
+
+import { useStore } from "../../store";
+import useStyles from "./styles";
 
 const StyledMenuItem = withStyles({ root: { width: "100%" } })((props) => (
   <MenuItem {...props} />
@@ -72,8 +69,28 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
     } catch (e) {}
   };
 
-  const handleAddDocument = () => {
-    actions.documents.addDocument();
+  const handleAddDocument = async () => {
+    try {
+      await confirm({
+        title: "Add new document",
+        confirmationText: "Add",
+        confirmationButtonProps: {
+          variant: "contained",
+        },
+        content: (
+          <TextField
+            autoFocus
+            id="title"
+            label="Title"
+            fullWidth
+            variant="standard"
+            onChange={(e) => (newTitle.current = e.target.value)}
+          />
+        ),
+      });
+
+      actions.documents.addDocument({ title: newTitle.current });
+    } catch (e) {}
   };
 
   const handleDeleteDocument = () => {
@@ -130,6 +147,18 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
                 }}
               >
                 <EditIcon fontSize="small" />
+              </IconButton>
+
+              <IconButton
+                aria-label="delete"
+                onClick={async (e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+
+                  await handleEditTitle(doc.id);
+                }}
+              >
+                <DeleteIcon fontSize="small" />
               </IconButton>
             </StyledMenuItem>
           );

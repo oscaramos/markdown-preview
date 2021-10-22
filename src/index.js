@@ -1,8 +1,7 @@
-import * as serviceWorker from "./serviceWorker";
-
 import store from "store";
 
 import "./global.css";
+import * as serviceWorker from "./serviceWorker";
 
 if (!document.ie) {
   // check for ie

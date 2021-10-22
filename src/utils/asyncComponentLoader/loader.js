@@ -1,5 +1,4 @@
-import React, { Suspense, useState, useEffect, lazy } from "react";
-
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { sleep } from "utils";
 
 // a little bit complex staff is going on here

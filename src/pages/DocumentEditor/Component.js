@@ -1,15 +1,16 @@
+import { useMediaQuery } from "@material-ui/core";
+import clsx from "clsx";
 import React from "react";
 import Markdown from "react-markdown";
-import clsx from "clsx";
+import { useHistory } from "react-router-dom";
 
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
+import CodeEditor from "components/CodeEditor";
 import Meta from "components/Meta";
-import CodeEditor from "../../components/CodeEditor";
+
 import { useStore } from "../../store";
-import { useMediaQuery } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
 
 const drawerWidth = 251;
 

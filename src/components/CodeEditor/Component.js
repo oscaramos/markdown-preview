@@ -1,17 +1,20 @@
-import ReactAce from "react-ace-editor";
 import React, { Component } from "react";
+import ReactAce from "react-ace-editor";
 
 export default class CodeEditor extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
   }
+
   onChange(newValue) {
     this.props.onChangeEditor(newValue);
   }
+
   getTheme(themeMode) {
     return themeMode === "dark" ? "dracula" : "eclipse";
   }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     // On change theme mode, update editor
     if (this.props.themeMode !== prevProps.themeMode) {
@@ -23,6 +26,7 @@ export default class CodeEditor extends Component {
       editor.setTheme(`ace/theme/${theme}`);
     }
   }
+
   render() {
     const themeMode = this.props.themeMode;
     return (

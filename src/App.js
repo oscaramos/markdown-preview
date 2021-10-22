@@ -1,17 +1,15 @@
-import React from "react";
-import { ConfirmProvider } from "material-ui-confirm";
-
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Box from "@material-ui/core/Box";
-
 import withErrorHandler from "errorHandling";
 import { App as ErrorBoundaryFallback } from "errorHandling/Fallbacks";
+import { ConfirmProvider } from "material-ui-confirm";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { StoreProvider } from "store";
+import { ThemeProvider } from "theme";
+
+import Box from "@material-ui/core/Box";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Layout from "sections/Layout";
-import { ThemeProvider } from "theme";
-import { StoreProvider } from "store";
-
-import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (

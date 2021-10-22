@@ -1,11 +1,10 @@
-import React from "react";
-
 import { createOvermind } from "overmind";
 import { createHook, Provider } from "overmind-react";
+import React from "react";
 
-import { initialState } from "./state";
 import * as actions from "./actions";
 import * as effects from "./effects";
+import { initialState } from "./state";
 
 export const store = createOvermind(
   {

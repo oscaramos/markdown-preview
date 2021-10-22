@@ -1,7 +1,5 @@
-import { useEffect, useRef } from "react";
-
 import { useSnackbar } from "notistack";
-
+import { useEffect, useRef } from "react";
 import { useStore } from "store";
 
 function Notifier() {

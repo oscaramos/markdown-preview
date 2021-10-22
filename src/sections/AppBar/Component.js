@@ -1,29 +1,27 @@
-import React from "react";
-
-import Toolbar from "@material-ui/core/Toolbar";
-import AppBar from "@material-ui/core/AppBar";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-import DividerMU from "@material-ui/core/Divider";
-import Tooltip from "@material-ui/core/Tooltip";
-import { withStyles } from "@material-ui/core/styles";
-
 import clsx from "clsx";
-
-import {
-  FaBrush as BrushIcon,
-  FaRedo as RedoIcon,
-  FaBars as MenuIcon,
-  FaGithub as GithubIcon,
-} from "react-icons/fa";
+import { repository, title } from "config";
+import React from "react";
+import { useStore } from "store";
 
 import CloseIcon from "@material-ui/icons/Close";
 
-import Link from "components/Link";
+import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import DividerMU from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
+import { withStyles } from "@material-ui/core/styles";
 
-import { useStore } from "store";
-import { title, repository } from "config";
+import {
+  FaBars as MenuIcon,
+  FaBrush as BrushIcon,
+  FaGithub as GithubIcon,
+  FaRedo as RedoIcon,
+} from "react-icons/fa";
+
+import Link from "components/Link";
 
 import useStyles from "./styles";
 

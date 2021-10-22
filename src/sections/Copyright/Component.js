@@ -1,10 +1,9 @@
+import { copyright, domain } from "config";
 import React from "react";
 
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
-
-import { copyright, domain } from "config";
+import Typography from "@material-ui/core/Typography";
 
 import useStyles from "./styles";
 

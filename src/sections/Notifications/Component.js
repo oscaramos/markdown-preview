@@ -1,10 +1,8 @@
+import { notifications } from "config";
+import { SnackbarProvider } from "notistack";
 import React from "react";
 
-import { SnackbarProvider } from "notistack";
-
 import Notifier from "./Notifier";
-
-import { notifications } from "config";
 
 function Notifications() {
   return (

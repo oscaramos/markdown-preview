@@ -1,8 +1,9 @@
-import _asyncComponentLoader from "./loader";
+import { loader as loaderDefaultOptions } from "config";
+import LoaderErrorBoundaryFallback from "errorHandling/Fallbacks/Loader";
 
 import Loading from "components/Loading";
-import LoaderErrorBoundaryFallback from "errorHandling/Fallbacks/Loader";
-import { loader as loaderDefaultOptions } from "config";
+
+import _asyncComponentLoader from "./loader";
 
 const asyncComponentLoader = (
   loadComponent,

@@ -1,8 +1,8 @@
+import clsx from "clsx";
 import React from "react";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Paper from "@material-ui/core/Paper";
-import clsx from "clsx";
 
 import useStyles from "./styles";
 
