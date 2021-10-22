@@ -1,11 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
-import { useSnackbar } from 'notistack';
+import { useSnackbar } from "notistack";
 
-import { useStore } from 'store';
+import { useStore } from "store";
 
 function Notifier() {
-  const { state: { notifications }, actions } = useStore();
+  const {
+    state: { notifications },
+    actions,
+  } = useStore();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const displayed = useRef([]);
 
@@ -14,10 +17,10 @@ function Notifier() {
   }
 
   function removeDisplayed(key) {
-    displayed.current = [...displayed.current.filter(_key => key !== _key)];
+    displayed.current = [...displayed.current.filter((_key) => key !== _key)];
   }
 
-  useEffect(_ => {
+  useEffect((_) => {
     notifications.forEach(({ message, options, dismissed }) => {
       if (dismissed) {
         // dismiss snackbar using notistack
@@ -27,7 +30,7 @@ function Notifier() {
 
       // do nothing if snackbar is already displayed
       if (displayed.current.includes(options.key)) return;
-      
+
       // display snackbar using notistack
       enqueueSnackbar(message, {
         ...options,

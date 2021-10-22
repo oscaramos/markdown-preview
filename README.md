@@ -6,27 +6,25 @@ Convert Github flavored markdown into HTML code.
 
 ## User Stories
 
--   [x] User can enter Github flavored markdown into a `textarea`
--   [x] User can see the resulting `HTML` in another container/box by pressing on a button
+- [x] User can enter Github flavored markdown into a `textarea`
+- [x] User can see the resulting `HTML` in another container/box by pressing on a button
 
 ## Bonus features
 
--   [x] User can see the resulting `HTML` updated automatically when the markdown `textarea` is changed
--   [x] When closing the browser window the markdown formatted text will be stored in `localStorage` and when the User returns, the data will be retrieved and displayed
--   [ ] User can click a button and the content of the box is saved to the `clipboard`
+- [x] User can see the resulting `HTML` updated automatically when the markdown `textarea` is changed
+- [x] When closing the browser window the markdown formatted text will be stored in `localStorage` and when the User returns, the data will be retrieved and displayed
+- [ ] User can click a button and the content of the box is saved to the `clipboard`
 
 ## Useful links and resources
 
--   [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
--   [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
--   [Marked - A markdown parser](https://github.com/markedjs/marked)
--   [How to Copy to Clipboard](https://www.w3schools.com/howto/howto_js_copy_clipboard.asp)
+- [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
+- [Marked - A markdown parser](https://github.com/markedjs/marked)
+- [How to Copy to Clipboard](https://www.w3schools.com/howto/howto_js_copy_clipboard.asp)
 
 ## Example projects
 
--   [Markdown Live Preview](https://markdownlivepreview.com/)
-
-
+- [Markdown Live Preview](https://markdownlivepreview.com/)
 
 # Template used
 
@@ -43,23 +41,24 @@ A minimal React PWA application as a Github template.
 It's a combination of essential (and minimal) libraries/components/utils and their integrations upon CRA, which developers usually need during the process of making React application.
 
 ## Motivation
+
 We love CRA. And we think it's the right way to build a React application for most of the projects. We have been using CRA in lots of projects, and we are sure that there are lots of routines that developers don't need to care about: like webpack config.
 
 By the same philosophy, there are other routines above the basic configuration, which are almost the same in lots of projects - like router, theme, store, etc. This project is a minimal layer upon CRA which gives you all of that out of the box as a template.
 
 ## Features
 
-* [CRA](#cra)
-* [React Router](#react-router)
-* [Material UI](#material-ui)
-* [Store](#store)
-* [Theme](#theme)
-* [Notifications](#notifications)
-* [Error Handling](#error-handling)
-* [Service Worker](#service-worker)
-* [SEO](#seo)
-* [No IE](#no-ie)
-* [Hoster](#hoster)
+- [CRA](#cra)
+- [React Router](#react-router)
+- [Material UI](#material-ui)
+- [Store](#store)
+- [Theme](#theme)
+- [Notifications](#notifications)
+- [Error Handling](#error-handling)
+- [Service Worker](#service-worker)
+- [SEO](#seo)
+- [No IE](#no-ie)
+- [Hoster](#hoster)
 
 #### CRA
 
@@ -81,7 +80,7 @@ You can use `useStore` hook exported from `store`. It'll give you `state`, `acti
 
 ```js
 // ...
-import { useStore } from 'store';
+import { useStore } from "store";
 
 function SomeCoolComponent() {
   const { state, actions, effects } = useStore();
@@ -96,7 +95,7 @@ The [theme system](https://github.com/suren-atoyan/react-pwa/blob/master/src/the
 
 ```js
 // ...
-import { useStore } from 'store';
+import { useStore } from "store";
 
 function SomeCoolComponent() {
   const { state, actions } = useStore();
@@ -119,13 +118,15 @@ Here we've used [notistack](https://github.com/iamhosseindhv/notistack). It's in
 
 ```js
 // ...
-import { useStore } from 'store';
+import { useStore } from "store";
 
 function SomeCoolComponent() {
   const { actions } = useStore();
 
   function showNiceWarning() {
-    actions.notifications.push({ message: 'Heeeeey, something went wrong I guess' });
+    actions.notifications.push({
+      message: "Heeeeey, something went wrong I guess",
+    });
   }
 }
 ```
@@ -228,4 +229,3 @@ Check the results in the [live demo](https://react-pwa.surenatoyan.com/)
 ## License
 
 [MIT](./LICENSE)
-

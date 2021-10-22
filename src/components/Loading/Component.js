@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Paper from '@material-ui/core/Paper';
-import clsx from 'clsx';
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Paper from "@material-ui/core/Paper";
+import clsx from "clsx";
 
-import useStyles from './styles';
+import useStyles from "./styles";
 
 function Loading({ size, withoutBackground }) {
   const classes = useStyles();

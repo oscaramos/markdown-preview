@@ -2,7 +2,7 @@ import initialDocuments from "./InitialDocuments";
 
 const initialState = {
   theme: {
-    mode: localStorage.getItem('theme-mode') || 'light',
+    mode: localStorage.getItem("theme-mode") || "light",
   },
   sw: {
     isInitialized: false,
@@ -10,10 +10,10 @@ const initialState = {
     registration: null,
   },
   notifications: [],
-  documents: JSON.parse(localStorage.getItem('documents')) || initialDocuments,
+  documents: JSON.parse(localStorage.getItem("documents")) || initialDocuments,
   drawer: {
-    open: false
-  }
+    open: false,
+  },
 };
 
 export { initialState };

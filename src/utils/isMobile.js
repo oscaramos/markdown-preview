@@ -1,3 +1,3 @@
-import isMobile from 'is-mobile';
+import isMobile from "is-mobile";
 
 export default isMobile();

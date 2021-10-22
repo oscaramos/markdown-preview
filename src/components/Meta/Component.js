@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { Helmet } from 'react-helmet';
-import { title as appTitle } from 'config';
+import { Helmet } from "react-helmet";
+import { title as appTitle } from "config";
 
 function Meta({ description, lang, meta, title, image }) {
-  const _title = `${appTitle} ${title ? '| ' + title : ''}`;
+  const _title = `${appTitle} ${title ? "| " + title : ""}`;
 
   return (
     <Helmet
@@ -44,7 +44,7 @@ function Meta({ description, lang, meta, title, image }) {
         },
       ].concat(meta)}
     />
-  )
+  );
 }
 
 Meta.defaultProps = {

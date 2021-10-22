@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import Toolbar from '@material-ui/core/Toolbar';
-import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import DividerMU from '@material-ui/core/Divider';
-import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles } from '@material-ui/core/styles';
+import Toolbar from "@material-ui/core/Toolbar";
+import AppBar from "@material-ui/core/AppBar";
+import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+import DividerMU from "@material-ui/core/Divider";
+import Tooltip from "@material-ui/core/Tooltip";
+import { withStyles } from "@material-ui/core/styles";
 
 import clsx from "clsx";
 
@@ -16,23 +16,23 @@ import {
   FaRedo as RedoIcon,
   FaBars as MenuIcon,
   FaGithub as GithubIcon,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from "@material-ui/icons/Close";
 
-import Link from 'components/Link';
+import Link from "components/Link";
 
-import { useStore } from 'store';
-import { title, repository } from 'config';
+import { useStore } from "store";
+import { title, repository } from "config";
 
-import useStyles from './styles';
+import useStyles from "./styles";
 
 const Divider = withStyles({
   root: {
-    'margin-left': 7,
-    'margin-right': 7,
+    "margin-left": 7,
+    "margin-right": 7,
   },
-})(props => <DividerMU flexItem orientation="vertical" {...props} />);
+})((props) => <DividerMU flexItem orientation="vertical" {...props} />);
 
 function AppBar_({ isMenuOpen, onMenuToggle }) {
   const classes = useStyles();
@@ -50,7 +50,7 @@ function AppBar_({ isMenuOpen, onMenuToggle }) {
     <AppBar
       position="absolute"
       className={clsx(classes.appBar, {
-        [classes.appBarShift]: isMenuOpen
+        [classes.appBarShift]: isMenuOpen,
       })}
       color="transparent"
       elevation={1}
@@ -62,9 +62,7 @@ function AppBar_({ isMenuOpen, onMenuToggle }) {
             aria-label="open menu"
             onClick={onMenuToggle}
           >
-            {
-              isMenuOpen ? <CloseIcon /> : <MenuIcon />
-            }
+            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
           <Link to="/">
             <Button aria-label="go to home" className={classes.title}>
@@ -73,18 +71,23 @@ function AppBar_({ isMenuOpen, onMenuToggle }) {
           </Link>
         </Box>
         <Box display="flex">
-          {
-            state.sw.isUpdated && (
-              <>
-                <Tooltip title="The application has newer version; press to update" arrow>
-                  <IconButton aria-label="update the application" color="secondary" onClick={handleAppUpdate}>
-                    <RedoIcon />
-                  </IconButton>
-                </Tooltip>
-                <Divider />
-              </>
-            )
-          }
+          {state.sw.isUpdated && (
+            <>
+              <Tooltip
+                title="The application has newer version; press to update"
+                arrow
+              >
+                <IconButton
+                  aria-label="update the application"
+                  color="secondary"
+                  onClick={handleAppUpdate}
+                >
+                  <RedoIcon />
+                </IconButton>
+              </Tooltip>
+              <Divider />
+            </>
+          )}
           <Tooltip title="It's open source" arrow>
             <IconButton
               aria-label="go to github page"

@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import Box from '@material-ui/core/Box';
+import Box from "@material-ui/core/Box";
 
-import Content from 'sections/Content';
+import Content from "sections/Content";
 // import Copyright from 'sections/Copyright';
-import Navigation from 'sections/Navigation';
-import Notifications from 'sections/Notifications';
+import Navigation from "sections/Navigation";
+import Notifications from "sections/Notifications";
 
-import useStyles from './styles';
+import useStyles from "./styles";
 
 function Layout() {
   const classes = useStyles();

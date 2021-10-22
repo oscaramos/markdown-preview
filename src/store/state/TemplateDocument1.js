@@ -1,4 +1,5 @@
-const TemplateDocument1 = "# Inque emi velox adflata et monte\n" +
+const TemplateDocument1 =
+  "# Inque emi velox adflata et monte\n" +
   "\n" +
   "## Et illa et Neritiaeque morari cur\n" +
   "\n" +
@@ -46,6 +47,6 @@ const TemplateDocument1 = "# Inque emi velox adflata et monte\n" +
   "- Mea parens nepotes aegro clamorque iuvenis\n" +
   "\n" +
   "Hoc *pressit adsueta non* in, **facerem Calydon gloria**. Repugnat speculabar\n" +
-  "amore. Mutabit *ex* possim paelice dare inde exiguis muneris forte non sororia."
+  "amore. Mutabit *ex* possim paelice dare inde exiguis muneris forte non sororia.";
 
-export default TemplateDocument1
+export default TemplateDocument1;
