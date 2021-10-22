@@ -9,6 +9,7 @@ import Meta from "components/Meta";
 import CodeEditor from "../../components/CodeEditor";
 import { useStore } from "../../store";
 import { useMediaQuery } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const drawerWidth = 251;
 
@@ -61,8 +62,11 @@ function Page1(props) {
   const classes = useStylesPage();
 
   const documentId = props.match.params.docId;
-  const documentName = actions.documents.getDocumentName(documentId);
-  const markDownText = state.documents[documentName].markdownText;
+  const document = state.documents.find(
+    (document) => document.id === documentId
+  );
+
+  const history = useHistory();
 
   const onChangeEditor = (newValue) => {
     // Set markdown text
@@ -74,6 +78,11 @@ function Page1(props) {
 
   const themeMode = state.theme.mode;
   const openDrawer = state.drawer.open;
+
+  if (!document) {
+    history.push("/not-found");
+    return null;
+  }
 
   return (
     <>
@@ -95,7 +104,7 @@ function Page1(props) {
             <CodeEditor
               onChangeEditor={onChangeEditor}
               style={codeEditorStyle}
-              setValue={markDownText}
+              setValue={document.markdownText}
               themeMode={themeMode}
             />
           </Grid>
@@ -109,7 +118,7 @@ function Page1(props) {
                   backgroundColor: themeMode === "dark" ? "#44475A" : "#ffffff",
                 }}
               >
-                <Markdown source={markDownText} />
+                <Markdown source={document.markdownText} />
               </div>
             </Grid>
           )}

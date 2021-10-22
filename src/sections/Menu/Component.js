@@ -1,4 +1,5 @@
 import React from "react";
+import { last } from "lodash";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
@@ -25,8 +26,8 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField,
   IconButton,
+  TextField,
 } from "@material-ui/core";
 
 const StyledMenuItem = withStyles({ root: { width: "100%" } })((props) => (
@@ -44,9 +45,7 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
 
   const { state, actions } = useStore();
 
-  const paramDocId =
-    location.pathname.split("/")[location.pathname.split("/").length - 1];
-  const selectedDocument = parseInt(paramDocId);
+  const paramDocId = last(location.pathname.split("/"));
 
   const [openNewTitle, setOpenNewTitle] = React.useState(false);
   const [newTitle, setNewTitle] = React.useState("");
@@ -72,15 +71,14 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
   };
 
   const handleDeleteDocument = () => {
-    const numDocuments = Object.keys(state.documents).length;
-    if (numDocuments > 1) {
-      // If it's the last document
-      if (selectedDocument === numDocuments - 1) {
-        // Go to the new last document
-        history.push(`/document/${selectedDocument - 1}`);
-      }
-      actions.documents.deleteDocument(selectedDocument);
+    const numDocuments = state.documents.length;
+    if (numDocuments <= 1) {
+      return;
     }
+    if (paramDocId === numDocuments - 1) {
+      history.push(`/document/${paramDocId - 1}`);
+    }
+    actions.documents.deleteDocument(paramDocId);
   };
 
   return (
@@ -105,24 +103,24 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
             <ListItemText primary="Documents" />
           </StyledMenuItemWithoutHover>
           {/* ----- Documents ----- */}
-          {Object.keys(state.documents).map((doc, index) => {
+          {state.documents.map((doc) => {
             return (
               <StyledMenuItem
-                selected={index === selectedDocument}
-                key={index}
+                selected={doc.id === paramDocId}
+                key={doc.id}
                 component={RouterLink}
-                to={`/document/${index}`}
+                to={`/document/${doc.id}`}
               >
                 <ListItemIcon>
                   <DescriptionIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary={doc} />
+                <ListItemText primary={doc.title} />
                 <IconButton aria-label="edit">
                   <EditIcon
                     fontSize="small"
                     onClick={() => {
                       handleClickOpen();
-                      setDocumentId(index);
+                      setDocumentId(doc.id);
                     }}
                   />
                 </IconButton>

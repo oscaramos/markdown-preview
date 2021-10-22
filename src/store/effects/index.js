@@ -29,16 +29,7 @@ const theme = {
 
 const document = {
   lsSave(documents) {
-    const serializedDocuments = Object.entries(documents).reduce((acc, doc) => {
-      return {
-        ...acc,
-        [doc[0]]: {
-          markdownText: doc[1].markdownText,
-        },
-      };
-    }, {});
-
-    localStorage.setItem("documents", JSON.stringify(serializedDocuments));
+    localStorage.setItem("documents", JSON.stringify(documents));
   },
 };
 

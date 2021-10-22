@@ -1,15 +1,22 @@
+import { v4 as uuidv4 } from "uuid";
 import TemplateDocument1 from "./TemplateDocument1";
 
-const initialDocuments = {
-  "doc1.md": {
+const initialDocuments = [
+  {
+    id: uuidv4(),
+    title: "doc1",
     markdownText: TemplateDocument1,
   },
-  "doc2.md": {
+  {
+    id: uuidv4(),
+    title: "doc2",
     markdownText: "# Document 2",
   },
-  "doc3.md": {
+  {
+    id: uuidv4(),
+    title: "doc3",
     markdownText: "# Document 3",
   },
-};
+];
 
 export default initialDocuments;
