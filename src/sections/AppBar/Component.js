@@ -1,18 +1,16 @@
+import CloseIcon from "@mui/icons-material/Close";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import DividerMU from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
+import Tooltip from "@mui/material/Tooltip";
+import withStyles from "@mui/styles/withStyles";
 import clsx from "clsx";
 import { repository, title } from "config";
 import React from "react";
 import { useStore } from "store";
-
-import CloseIcon from "@material-ui/icons/Close";
-
-import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import DividerMU from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import Toolbar from "@material-ui/core/Toolbar";
-import Tooltip from "@material-ui/core/Tooltip";
-import { withStyles } from "@material-ui/core/styles";
 
 import {
   FaBars as MenuIcon,
@@ -21,9 +19,14 @@ import {
   FaRedo as RedoIcon,
 } from "react-icons/fa";
 
+
+
 import Link from "components/Link";
 
+
+
 import useStyles from "./styles";
+
 
 const Divider = withStyles({
   root: {
@@ -59,6 +62,7 @@ function AppBar_({ isMenuOpen, onMenuToggle }) {
             edge="start"
             aria-label="open menu"
             onClick={onMenuToggle}
+            size="large"
           >
             {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
@@ -79,6 +83,7 @@ function AppBar_({ isMenuOpen, onMenuToggle }) {
                   aria-label="update the application"
                   color="secondary"
                   onClick={handleAppUpdate}
+                  size="large"
                 >
                   <RedoIcon />
                 </IconButton>
@@ -93,6 +98,7 @@ function AppBar_({ isMenuOpen, onMenuToggle }) {
               target="_blank"
               rel="noreferrer"
               href={repository}
+              size="large"
             >
               <GithubIcon />
             </IconButton>
@@ -103,6 +109,7 @@ function AppBar_({ isMenuOpen, onMenuToggle }) {
               aria-label="toggle theme"
               edge="end"
               onClick={handleToggleTheme}
+              size="large"
             >
               <BrushIcon />
             </IconButton>

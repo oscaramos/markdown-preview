@@ -1,22 +1,20 @@
-import { IconButton, TextField } from "@material-ui/core";
+import DeleteIcon from "@mui/icons-material/Delete";
+import DescriptionIcon from "@mui/icons-material/Description";
+import EditIcon from "@mui/icons-material/Edit";
+import { IconButton, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import withStyles from "@mui/styles/withStyles";
 import { last } from "lodash";
 import { useConfirm } from "material-ui-confirm";
 import React from "react";
 import { Link as RouterLink, withRouter } from "react-router-dom";
 import { isMobile } from "utils";
-
-import DeleteIcon from "@material-ui/icons/Delete";
-import DescriptionIcon from "@material-ui/icons/Description";
-import EditIcon from "@material-ui/icons/Edit";
-
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import MenuItem from "@material-ui/core/MenuItem";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import { withStyles } from "@material-ui/core/styles";
 
 import { useStore } from "../../store";
 import useStyles from "./styles";
@@ -145,7 +143,7 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
 
                   await handleEditTitle(doc.id);
                 }}
-              >
+                size="large">
                 <EditIcon fontSize="small" />
               </IconButton>
 
@@ -157,7 +155,7 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
 
                   await handleEditTitle(doc.id);
                 }}
-              >
+                size="large">
                 <DeleteIcon fontSize="small" />
               </IconButton>
             </StyledMenuItem>

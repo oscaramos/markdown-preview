@@ -1,17 +1,22 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import routes from "routes";
 
+
+
 import Page from "components/Page";
+
 
 function Content() {
   return (
     <Page>
-      <Switch>
-        {routes.map((route) => (
-          <Route {...route} key={route.path || "#"} />
-        ))}
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          {routes.map((route) => (
+            <Route {...route} key={route.path || "#"} />
+          ))}
+        </Switch>
+      </Suspense>
     </Page>
   );
 }

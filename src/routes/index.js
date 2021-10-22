@@ -1,18 +1,24 @@
-import { asyncComponentLoader } from "utils";
+import DocumentEditor from "pages/DocumentEditor";
+import Welcome from "pages/Welcome";
+
+
+
+import NotFound from "components/NotFound";
+
 
 const routes = [
   {
     exact: true,
-    component: asyncComponentLoader((_) => import("pages/Welcome")),
+    component: Welcome,
     path: "/",
   },
   {
     exact: true,
-    component: asyncComponentLoader((_) => import("pages/DocumentEditor")),
+    component: DocumentEditor,
     path: "/document/:docId",
   },
   {
-    component: asyncComponentLoader((_) => import("components/NotFound")),
+    component: NotFoud,
   },
 ];
 

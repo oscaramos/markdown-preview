@@ -1,5 +1,9 @@
 import { isMobile } from "utils";
 
+
+
+
+
 /* set your data here */
 const email = "oscar.ramos@ucsp.edu.pe";
 const domain = "i-dont-have-domain-yet.com";
@@ -34,7 +38,7 @@ const copyright = {
 const themes = {
   light: {
     palette: {
-      type: "light",
+      mode: "light",
       background: {
         default: "#fafafa",
         paper: "#fff",
@@ -50,10 +54,10 @@ const themes = {
 
   dark: {
     palette: {
-      type: "dark",
+      mode: "dark",
       background: {
         default: "#111",
-        paper: "#171717",
+        paper: "#71717",
       },
       primary: {
         light: "#7986cb",

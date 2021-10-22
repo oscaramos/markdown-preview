@@ -1,9 +1,11 @@
+import DividerMU from "@mui/material/Divider";
 import clsx from "clsx";
 import React from "react";
 
-import DividerMU from "@material-ui/core/Divider";
+
 
 import useStyles from "./styles";
+
 
 function Divider({ className, ...props }) {
   const classes = useStyles();

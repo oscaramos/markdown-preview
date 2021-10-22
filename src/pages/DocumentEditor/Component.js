@@ -1,11 +1,11 @@
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { useTheme } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import React from "react";
 import Markdown from "react-markdown";
 import { useHistory } from "react-router-dom";
-
-import Grid from "@material-ui/core/Grid";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import CodeEditor from "components/CodeEditor";
 import Meta from "components/Meta";
@@ -58,7 +58,7 @@ const useStylesPage = makeStyles((theme) => ({
 function Page1(props) {
   const { state, actions } = useStore();
   const theme = useTheme();
-  const matchXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchXS = useMediaQuery(theme.breakpoints.down('s"sm";
 
   const classes = useStylesPage();
 

@@ -1,9 +1,9 @@
-import { ThemeProvider } from "@material-ui/styles";
+import { StyledEngineProvider } from "@mui/material/styles";
+import { createTheme, adaptV4Theme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/styles";
 import { themes } from "config";
 import React from "react";
 import { useStore } from "store";
-
-import { createMuiTheme } from "@material-ui/core/styles";
 
 function CustomThemeProvider({ children }) {
   const {
@@ -11,9 +11,11 @@ function CustomThemeProvider({ children }) {
   } = useStore();
 
   return (
-    <ThemeProvider theme={createMuiTheme(themes[theme.mode])}>
-      {children}
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={createTheme(adaptV4Theme(themes[theme.mode]))}>
+        {children}
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 
