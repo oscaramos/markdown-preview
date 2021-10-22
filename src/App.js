@@ -11,7 +11,6 @@ import { ThemeProvider } from "theme";
 
 import Layout from "sections/Layout";
 
-
 function App() {
   return (
     <StoreProvider>

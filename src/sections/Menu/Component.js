@@ -143,7 +143,8 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
 
                   await handleEditTitle(doc.id);
                 }}
-                size="large">
+                size="large"
+              >
                 <EditIcon fontSize="small" />
               </IconButton>
 
@@ -155,7 +156,8 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
 
                   await handleEditTitle(doc.id);
                 }}
-                size="large">
+                size="large"
+              >
                 <DeleteIcon fontSize="small" />
               </IconButton>
             </StyledMenuItem>

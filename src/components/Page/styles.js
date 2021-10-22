@@ -1,10 +1,6 @@
 import makeStyles from "@mui/styles/makeStyles";
 import { isMobile } from "utils";
 
-
-
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",

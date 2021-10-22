@@ -19,14 +19,9 @@ import {
   FaRedo as RedoIcon,
 } from "react-icons/fa";
 
-
-
 import Link from "components/Link";
 
-
-
 import useStyles from "./styles";
-
 
 const Divider = withStyles({
   root: {

@@ -1,9 +1,5 @@
 import { isMobile } from "utils";
 
-
-
-
-
 /* set your data here */
 const email = "oscar.ramos@ucsp.edu.pe";
 const domain = "i-dont-have-domain-yet.com";

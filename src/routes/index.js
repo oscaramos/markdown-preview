@@ -1,10 +1,7 @@
 import DocumentEditor from "pages/DocumentEditor";
 import Welcome from "pages/Welcome";
 
-
-
 import NotFound from "components/NotFound";
-
 
 const routes = [
   {
@@ -18,7 +15,7 @@ const routes = [
     path: "/document/:docId",
   },
   {
-    component: NotFoud,
+    component: NotFound,
   },
 ];
 

@@ -58,7 +58,7 @@ const useStylesPage = makeStyles((theme) => ({
 function Page1(props) {
   const { state, actions } = useStore();
   const theme = useTheme();
-  const matchXS = useMediaQuery(theme.breakpoints.down('s"sm";
+  const matchXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const classes = useStylesPage();
 
