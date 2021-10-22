@@ -1,6 +1,7 @@
-import DividerMU from "@mui/material/Divider";
 import clsx from "clsx";
 import React from "react";
+
+import DividerMU from "@mui/material/Divider";
 
 import useStyles from "./styles";
 

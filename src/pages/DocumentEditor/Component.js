@@ -1,11 +1,13 @@
-import { useMediaQuery } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import React from "react";
 import Markdown from "react-markdown";
 import { useHistory } from "react-router-dom";
+
+import Grid from "@mui/material/Grid";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import makeStyles from "@mui/styles/makeStyles";
 
 import CodeEditor from "components/CodeEditor";
 import Meta from "components/Meta";

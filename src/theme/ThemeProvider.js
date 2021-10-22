@@ -1,9 +1,10 @@
-import { StyledEngineProvider } from "@mui/material/styles";
-import { createTheme, adaptV4Theme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/styles";
 import { themes } from "config";
 import React from "react";
 import { useStore } from "store";
+
+import { StyledEngineProvider } from "@mui/material/styles";
+import { createTheme, adaptV4Theme } from "@mui/material/styles";
 
 function CustomThemeProvider({ children }) {
   const {

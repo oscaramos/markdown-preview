@@ -1,5 +1,6 @@
-import makeStyles from "@mui/styles/makeStyles";
 import { isMobile } from "utils";
+
+import makeStyles from "@mui/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,9 +1,10 @@
-import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import { email, messages } from "config";
 import React from "react";
 import { resetApp } from "utils";
+
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 import { FaRedo as ResetIcon } from "react-icons/fa";
 

@@ -1,4 +1,8 @@
-import CloseIcon from "@mui/icons-material/Close";
+import clsx from "clsx";
+import { repository, title } from "config";
+import React from "react";
+import { useStore } from "store";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -6,11 +10,10 @@ import DividerMU from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
+
+import CloseIcon from "@mui/icons-material/Close";
+
 import withStyles from "@mui/styles/withStyles";
-import clsx from "clsx";
-import { repository, title } from "config";
-import React from "react";
-import { useStore } from "store";
 
 import {
   FaBars as MenuIcon,
