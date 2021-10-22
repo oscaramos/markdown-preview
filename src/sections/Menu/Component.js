@@ -11,6 +11,7 @@ import { Link as RouterLink, withRouter } from "react-router-dom";
 
 import { withStyles } from "@material-ui/core/styles";
 
+import EditIcon from "@material-ui/icons/Edit";
 import DescriptionIcon from "@material-ui/icons/Description";
 
 import { isMobile } from "utils";
@@ -19,6 +20,14 @@ import useStyles from "./styles";
 import { useStore } from "../../store";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  IconButton,
+} from "@material-ui/core";
 
 const StyledMenuItem = withStyles({ root: { width: "100%" } })((props) => (
   <MenuItem {...props} />
@@ -39,8 +48,27 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
     location.pathname.split("/")[location.pathname.split("/").length - 1];
   const selectedDocument = parseInt(paramDocId);
 
+  const [openNewTitle, setOpenNewTitle] = React.useState(false);
+  const [newTitle, setNewTitle] = React.useState("");
+  const [documentId, setDocumentId] = React.useState(0);
+
+  const handleClickOpen = () => {
+    setOpenNewTitle(true);
+  };
+
+  const handleClose = () => {
+    setOpenNewTitle(false);
+  };
+
   const handleAddDocument = () => {
     actions.documents.addDocument();
+  };
+
+  const handleChangeDocumentName = () => {
+    actions.documents.setDocumentName({
+      documentId,
+      newDocumentName: newTitle,
+    });
   };
 
   const handleDeleteDocument = () => {
@@ -56,70 +84,113 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
   };
 
   return (
-    <SwipeableDrawer
-      anchor="left"
-      open={isOpen}
-      onClose={onClose}
-      onOpen={onOpen}
-      swipeAreaWidth={30}
-      disableBackdropTransition={true}
-      variant="persistent"
-      edge="start"
-    >
-      <List className={classes.list}>
-        <div className={classes.toolbar} />
-        <StyledMenuItemWithoutHover
-          onClick={onClose}
-          component={RouterLink}
-          to="/"
-        >
-          <ListItemText primary="Documents" />
-        </StyledMenuItemWithoutHover>
-        {/* ----- Documents ----- */}
-        {Object.keys(state.documents).map((doc, index) => {
-          return (
-            <StyledMenuItem
-              selected={index === selectedDocument}
-              key={index}
-              component={RouterLink}
-              to={`/document/${index}`}
-            >
-              <ListItemIcon>
-                <DescriptionIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary={doc} />
-            </StyledMenuItem>
-          );
-        })}
-        {/* -----Actions----- */}
-        <Grid
-          container
-          direction="column"
-          style={{ paddingLeft: "10%", paddingRight: "10%", marginTop: "1em" }}
-        >
-          <Grid item>
-            <Button
-              variant="outlined"
-              color="primary"
-              fullWidth
-              onClick={handleAddDocument}
-            >
-              Add Document
-            </Button>
+    <>
+      <SwipeableDrawer
+        anchor="left"
+        open={isOpen}
+        onClose={onClose}
+        onOpen={onOpen}
+        swipeAreaWidth={30}
+        disableBackdropTransition={true}
+        variant="persistent"
+        edge="start"
+      >
+        <List className={classes.list}>
+          <div className={classes.toolbar} />
+          <StyledMenuItemWithoutHover
+            onClick={onClose}
+            component={RouterLink}
+            to="/"
+          >
+            <ListItemText primary="Documents" />
+          </StyledMenuItemWithoutHover>
+          {/* ----- Documents ----- */}
+          {Object.keys(state.documents).map((doc, index) => {
+            return (
+              <StyledMenuItem
+                selected={index === selectedDocument}
+                key={index}
+                component={RouterLink}
+                to={`/document/${index}`}
+              >
+                <ListItemIcon>
+                  <DescriptionIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary={doc} />
+                <IconButton aria-label="edit">
+                  <EditIcon
+                    fontSize="small"
+                    onClick={() => {
+                      handleClickOpen();
+                      setDocumentId(index);
+                    }}
+                  />
+                </IconButton>
+              </StyledMenuItem>
+            );
+          })}
+          {/* -----Actions----- */}
+          <Grid
+            container
+            direction="column"
+            style={{
+              paddingLeft: "10%",
+              paddingRight: "10%",
+              marginTop: "1em",
+            }}
+          >
+            <Grid item>
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                onClick={handleAddDocument}
+              >
+                Add Document
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="text"
+                color="secondary"
+                fullWidth
+                onClick={handleDeleteDocument}
+              >
+                Delete Document
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Button
-              variant="text"
-              color="secondary"
-              fullWidth
-              onClick={handleDeleteDocument}
-            >
-              Delete Document
-            </Button>
-          </Grid>
-        </Grid>
-      </List>
-    </SwipeableDrawer>
+        </List>
+      </SwipeableDrawer>
+
+      <Dialog open={openNewTitle} onClose={handleClose}>
+        <DialogTitle>Edit title</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="title"
+            label="New title"
+            fullWidth
+            variant="standard"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button
+            onClick={() => {
+              handleChangeDocumentName();
+              handleClose();
+              setNewTitle("");
+            }}
+          >
+            Edit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 }
 

@@ -3,7 +3,6 @@ import Markdown from "react-markdown";
 import clsx from "clsx";
 
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import Meta from "components/Meta";
@@ -73,14 +72,6 @@ function Page1(props) {
     });
   };
 
-  const onChangeDocumentName = (newValue) => {
-    // Set document name
-    actions.documents.setDocumentName({
-      documentId,
-      newDocumentName: newValue,
-    });
-  };
-
   const themeMode = state.theme.mode;
   const openDrawer = state.drawer.open;
 
@@ -94,16 +85,6 @@ function Page1(props) {
           [classes.containerShift]: openDrawer,
         })}
       >
-        <Grid item container>
-          {" "}
-          {/* Hacky */}
-          <TextField
-            label="Document name"
-            value={documentName}
-            className={classes.documentNameInput}
-            onChange={(e) => onChangeDocumentName(e.target.value)}
-          />
-        </Grid>
         <Grid
           item
           container
