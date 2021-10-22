@@ -1,4 +1,5 @@
 import React from "react";
+import { ConfirmProvider } from "material-ui-confirm";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Box from "@material-ui/core/Box";
@@ -16,12 +17,14 @@ function App() {
   return (
     <StoreProvider>
       <ThemeProvider>
-        <Box display="flex">
-          <CssBaseline />
-          <Router>
-            <Layout />
-          </Router>
-        </Box>
+        <ConfirmProvider>
+          <Box display="flex">
+            <CssBaseline />
+            <Router>
+              <Layout />
+            </Router>
+          </Box>
+        </ConfirmProvider>
       </ThemeProvider>
     </StoreProvider>
   );
