@@ -75,4 +75,4 @@ const drawer = {
   },
 };
 
-export { theme, sw, notifications, documents, drawer };
+export { theme, sw, documents, drawer };
