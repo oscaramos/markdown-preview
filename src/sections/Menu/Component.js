@@ -95,15 +95,20 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
     } catch (e) {}
   };
 
-  const handleDeleteDocument = () => {
-    const numDocuments = state.documents.length;
-    if (numDocuments <= 1) {
-      return;
-    }
-    if (paramDocId === numDocuments - 1) {
-      history.push(`/document/${paramDocId - 1}`);
-    }
-    actions.documents.deleteDocument(paramDocId);
+  const handleDeleteDocument = async (documentId) => {
+    try {
+      await confirm({
+        title: "Delete document",
+        content: "Are you sure to delete this document?",
+        confirmationText: "Delete",
+        confirmationButtonProps: {
+          variant: "contained",
+          color: "error",
+        },
+      });
+
+      actions.documents.deleteDocument(documentId);
+    } catch (e) {}
   };
 
   return (
@@ -158,7 +163,7 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
                   e.stopPropagation();
                   e.preventDefault();
 
-                  await handleEditTitle(doc.id);
+                  await handleDeleteDocument(doc.id);
                 }}
                 size="large"
               >
@@ -184,17 +189,7 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
               fullWidth
               onClick={handleAddDocument}
             >
-              Add Document
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button
-              variant="text"
-              color="secondary"
-              fullWidth
-              onClick={handleDeleteDocument}
-            >
-              Delete Document
+              Add
             </Button>
           </Grid>
         </Grid>
