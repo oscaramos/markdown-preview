@@ -6,15 +6,12 @@ import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import makeStyles from "@mui/styles/makeStyles";
-
 import CodeEditor from "components/CodeEditor";
 import Layout from "components/Layout";
 import Meta from "components/Meta";
 
 import { useStore } from "../../store";
-
-export const drawerWidth = 251;
+import useStyles from "./styles";
 
 const codeEditorStyle = {
   width: "100%",
@@ -23,30 +20,12 @@ const codeEditorStyle = {
   overflowY: "scroll",
 };
 
-const useStylesPage = makeStyles(() => ({
-  convertedContainer: {
-    width: "100%",
-    // height: '100vh',
-    backgroundColor: "white",
-    overflowX: "scroll",
-    overflowY: "scroll",
-    display: "block",
-    boxSizing: "border-box",
-  },
-  documentNameInput: {
-    width: "100%",
-  },
-  codeEditorAndResultContainer: {
-    height: "100vh",
-  },
-}));
-
 function DocumentEditor({ match }) {
   const { state, actions } = useStore();
   const theme = useTheme();
   const matchXS = useMediaQuery(theme.breakpoints.down("xs"));
 
-  const classes = useStylesPage();
+  const classes = useStyles();
 
   const documentId = match.params.docId;
   const document = state.documents.find(
@@ -56,7 +35,6 @@ function DocumentEditor({ match }) {
   const history = useHistory();
 
   const onChangeEditor = (newValue) => {
-    // Set markdown text
     actions.documents.setMarkdownText({
       documentId,
       newDocumentText: newValue,

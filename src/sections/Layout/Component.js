@@ -3,7 +3,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 
 import Content from "sections/Content";
-// import Copyright from 'sections/Copyright';
 import Navigation from "sections/Navigation";
 import Notifications from "sections/Notifications";
 
@@ -20,7 +19,6 @@ function Layout() {
         <Box className={classes.spacer} />
         <Box className={classes.content}>
           <Content />
-          {/*<Copyright />*/}
         </Box>
       </Box>
     </>

@@ -1,11 +1,19 @@
 import makeStyles from "@mui/styles/makeStyles";
 
 const useStyles = makeStyles(() => ({
-  root: {
-    display: "flex",
-    "justify-content": "center",
-    "align-items": "center",
-    height: "100%",
+  convertedContainer: {
+    width: "100%",
+    backgroundColor: "white",
+    overflowX: "scroll",
+    overflowY: "scroll",
+    display: "block",
+    boxSizing: "border-box",
+  },
+  documentNameInput: {
+    width: "100%",
+  },
+  codeEditorAndResultContainer: {
+    height: "100vh",
   },
 }));
 

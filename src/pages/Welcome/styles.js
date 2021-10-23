@@ -1,31 +1,5 @@
 import makeStyles from "@mui/styles/makeStyles";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    "justify-content": "center",
-    "align-items": "center",
-    height: "100%",
-  },
-  wrapper: {
-    display: "flex",
-    "user-select": "none",
-    "align-items": ({ isSmallScreen }) =>
-      isSmallScreen ? "center" : "initial",
-    "text-align": "center",
-  },
-  icon: {
-    width: "100%",
-    height: "100%",
-    color: theme.palette.secondary.main,
-  },
-  iconBox: {
-    width: 50,
-    "margin-right": 10,
-  },
-  title: {
-    "font-weight": 100,
-  },
-}));
+const useStyles = makeStyles(() => ({}));
 
 export default useStyles;
