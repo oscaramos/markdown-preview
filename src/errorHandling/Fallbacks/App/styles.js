@@ -1,6 +1,6 @@
 import makeStyles from "@mui/styles/makeStyles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   wrapper: {
     height: "100%",
     display: "flex",

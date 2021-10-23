@@ -45,7 +45,7 @@ const getDelayedFallback = (Fallback, delay) => (props) => {
 //    quickly, which will again lead to blinking on the page.
 
 // The solution of the second problem is to set of a minimum timeout, which will
-// ensure that the falback component will be rendered for that minimum amount of time
+// ensure that the fallback component will be rendered for that minimum amount of time
 
 const getLazyComponent = (loadComponent, loaderOptions, FallbackFail) =>
   lazy((_) => {

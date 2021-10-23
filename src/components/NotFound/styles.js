@@ -1,6 +1,6 @@
 import makeStyles from "@mui/styles/makeStyles";
 
-export default makeStyles((theme) => ({
+export default makeStyles(() => ({
   message: {
     "font-weight": 100,
   },

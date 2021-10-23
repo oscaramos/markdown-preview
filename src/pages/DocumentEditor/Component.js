@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import React from "react";
 import Markdown from "react-markdown";
 import { useHistory } from "react-router-dom";
@@ -24,7 +23,7 @@ const codeEditorStyle = {
   overflowY: "scroll",
 };
 
-const useStylesPage = makeStyles((theme) => ({
+const useStylesPage = makeStyles(() => ({
   convertedContainer: {
     width: "100%",
     // height: '100vh',
@@ -65,7 +64,6 @@ function DocumentEditor({ match }) {
   };
 
   const themeMode = state.theme.mode;
-  const openDrawer = state.drawer.open;
 
   if (!document) {
     history.push("/not-found");
