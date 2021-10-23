@@ -1,51 +1,35 @@
-import React, { Component } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import ReactAce from "react-ace-editor";
 
-export default class CodeEditor extends Component {
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-  }
+export default function CodeEditor({ themeMode, onChangeEditor, ...props }) {
+  const editorRef = useRef(null);
 
-  onChange(newValue) {
-    this.props.onChangeEditor(newValue);
-  }
+  const theme = useMemo(
+    () => (themeMode === "dark" ? "dracula" : "eclipse"),
+    [themeMode]
+  );
 
-  getTheme(themeMode) {
-    return themeMode === "dark" ? "dracula" : "eclipse";
-  }
+  useEffect(() => {
+    const editor = editorRef.current.editor;
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    // On change theme mode, update editor
-    if (this.props.themeMode !== prevProps.themeMode) {
-      const editor = this.ace.editor;
-      const themeMode = this.props.themeMode;
+    require(`brace/theme/${theme}`);
+    editor.setTheme(`ace/theme/${theme}`);
+  }, [theme]);
 
-      const theme = this.getTheme(themeMode);
-      require(`brace/theme/${theme}`);
-      editor.setTheme(`ace/theme/${theme}`);
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.editor.setShowPrintMargin(false); // Removes annoying vertical bar
     }
-  }
+  }, []);
 
-  render() {
-    const themeMode = this.props.themeMode;
-    return (
-      <ReactAce
-        mode="markdown"
-        theme={this.getTheme(themeMode)}
-        setReadOnly={false}
-        onChange={this.onChange}
-        // Let's put things into scope
-        ref={(instance) => {
-          this.ace = instance;
-          if (instance) {
-            // On updates this is null
-            const editor = this.ace.editor;
-            editor.setShowPrintMargin(false); // Removes annoying vertical bar
-          }
-        }}
-        {...this.props}
-      />
-    );
-  }
+  return (
+    <ReactAce
+      mode="markdown"
+      theme={theme}
+      setReadOnly={false}
+      onChange={onChangeEditor}
+      ref={editorRef}
+      {...props}
+    />
+  );
 }
