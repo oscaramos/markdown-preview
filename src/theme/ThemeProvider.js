@@ -1,18 +1,19 @@
-import { ThemeProvider } from "@mui/styles";
 import { themes } from "config";
 import React from "react";
 import { useStore } from "store";
 
-import { createTheme, StyledEngineProvider } from "@mui/material/styles";
+import {
+  createTheme,
+  StyledEngineProvider,
+  ThemeProvider,
+} from "@mui/material/styles";
 
 function CustomThemeProvider({ children }) {
-  const {
-    state: { theme },
-  } = useStore();
+  const { state } = useStore();
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={createTheme(themes[theme.mode])}>
+      <ThemeProvider theme={createTheme(themes[state.theme.mode])}>
         {children}
       </ThemeProvider>
     </StyledEngineProvider>

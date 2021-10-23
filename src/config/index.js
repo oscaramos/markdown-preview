@@ -35,32 +35,12 @@ const themes = {
   light: {
     palette: {
       mode: "light",
-      background: {
-        default: "#fafafa",
-        paper: "#fff",
-      },
-      primary: {
-        light: "#7986cb",
-        main: "#3f51b5",
-        dark: "#303f9f",
-        contrastText: "#fff",
-      },
     },
   },
 
   dark: {
     palette: {
       mode: "dark",
-      background: {
-        default: "#111",
-        paper: "#71717",
-      },
-      primary: {
-        light: "#7986cb",
-        main: "#333",
-        dark: "#303f9f",
-        contrastText: "#fff",
-      },
     },
   },
 };

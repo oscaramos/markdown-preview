@@ -8,27 +8,38 @@ import { ThemeProvider } from "theme";
 
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import { StyledEngineProvider } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 import Layout from "sections/Layout";
 
 function App() {
+  const theme = useTheme();
+
+  return (
+    <Box
+      display="flex"
+      style={{
+        backgroundColor: theme.palette.background.default,
+      }}
+    >
+      <CssBaseline />
+      <Router>
+        <Layout />
+      </Router>
+    </Box>
+  );
+}
+
+function AppWithProviders() {
   return (
     <StoreProvider>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider>
-          <ConfirmProvider>
-            <Box display="flex">
-              <CssBaseline />
-              <Router>
-                <Layout />
-              </Router>
-            </Box>
-          </ConfirmProvider>
-        </ThemeProvider>
-      </StyledEngineProvider>
+      <ThemeProvider>
+        <ConfirmProvider>
+          <App />
+        </ConfirmProvider>
+      </ThemeProvider>
     </StoreProvider>
   );
 }
 
-export default withErrorHandler(App, ErrorBoundaryFallback);
+export default withErrorHandler(AppWithProviders, ErrorBoundaryFallback);
