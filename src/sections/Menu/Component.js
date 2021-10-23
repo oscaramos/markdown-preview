@@ -96,7 +96,12 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
         ),
       });
 
-      actions.documents.addDocument({ title: newTitle.current });
+      actions.documents.addDocument({
+        title: newTitle.current,
+        onFinished: (newDocument) => {
+          history.push(`/document/${newDocument.id}`);
+        },
+      });
     } catch (e) {}
   };
 

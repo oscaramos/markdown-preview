@@ -46,16 +46,15 @@ const documents = {
     effects.document.lsSave(state.documents);
   },
 
-  addDocument({ state, effects }, { title }) {
-    state.documents = [
-      ...state.documents,
-      {
-        id: uuidv4(),
-        title,
-        markdownText: "New document",
-      },
-    ];
+  addDocument({ state, effects }, { title, onFinished }) {
+    const newDocument = {
+      id: uuidv4(),
+      title,
+      markdownText: "New document",
+    };
+    state.documents = [...state.documents, newDocument];
     effects.document.lsSave(state.documents);
+    onFinished(newDocument);
   },
 
   deleteDocument({ state, effects }, documentId) {
