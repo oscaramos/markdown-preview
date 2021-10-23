@@ -28,8 +28,8 @@ Convert Github flavored markdown into HTML code.
 
 ## Screenshots
 
-<img src="./docs/markdown-preview-1.png" width="600" title="Screenshot 1">
-<img src="./docs/markdown-preview-2.png" width="600" title="Screenshot 2">
+<img src="./docs/markdown-preview-1.png" width="900" title="Screenshot 1">
+<img src="./docs/markdown-preview-2.png" width="900" title="Screenshot 2">
 
 # Template used
 
