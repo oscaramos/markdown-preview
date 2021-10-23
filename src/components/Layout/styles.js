@@ -1,6 +1,6 @@
 import makeStyles from "@mui/styles/makeStyles";
 
-const drawerWidth = 251;
+import { drawerWidth } from "../../sections/Menu/styles";
 
 const useStyles = makeStyles((theme) => ({
   container: {

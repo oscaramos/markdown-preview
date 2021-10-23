@@ -1,8 +1,10 @@
 import makeStyles from "@mui/styles/makeStyles";
 
+export const drawerWidth = 300;
+
 const useStyles = makeStyles((theme) => ({
   list: {
-    width: 250,
+    width: drawerWidth,
   },
   toolbar: theme.mixins.toolbar,
 }));

@@ -55,6 +55,7 @@ function DocumentEditor({ match }) {
           container
           direction="row"
           className={classes.codeEditorAndResultContainer}
+          spacing={4}
         >
           <Grid item xs={12} sm={6}>
             <CodeEditor
