@@ -118,6 +118,11 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
       });
 
       actions.documents.deleteDocument(documentId);
+
+      // Deleted document is currently opened
+      if (paramDocId === documentId) {
+        history.push("/");
+      }
     } catch (e) {}
   };
 
