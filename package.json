@@ -16,7 +16,7 @@
     "is-mobile": "^2.2.1",
     "lodash": "^4.17.21",
     "material-ui-confirm": "^3.0.2",
-    "notistack": "^0.9.17",
+    "notistack": "^2.0.2",
     "overmind": "^24.1.1",
     "overmind-react": "^25.1.1",
     "react": "^17.0.2",
