@@ -1,3 +1,4 @@
+import FileSaver from "file-saver";
 import { last } from "lodash";
 import { useConfirm } from "material-ui-confirm";
 import React from "react";
@@ -16,6 +17,7 @@ import TextField from "@mui/material/TextField";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import DescriptionIcon from "@mui/icons-material/Description";
+import DownloadIcon from "@mui/icons-material/Download";
 import EditIcon from "@mui/icons-material/Edit";
 
 import withStyles from "@mui/styles/withStyles";
@@ -126,6 +128,15 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
     } catch (e) {}
   };
 
+  const handleDownloadDocument = async (document) => {
+    FileSaver.saveAs(
+      new Blob([document.markdownText], {
+        type: "text/plain;charset=utf-8",
+      }),
+      `${document.title}.md`
+    );
+  };
+
   return (
     <SwipeableDrawer
       anchor="left"
@@ -183,6 +194,19 @@ function Menu({ isOpen, onClose, onOpen, location, history }) {
                 size="large"
               >
                 <DeleteIcon fontSize="small" />
+              </IconButton>
+
+              <IconButton
+                aria-label="download"
+                onClick={async (e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+
+                  await handleDownloadDocument(doc);
+                }}
+                size="large"
+              >
+                <DownloadIcon fontSize="small" />
               </IconButton>
             </StyledMenuItem>
           );
