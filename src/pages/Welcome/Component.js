@@ -16,7 +16,7 @@ function Welcome() {
     if (state.documents.length > 0) {
       history.push(`/document/${state.documents[0].id}`);
     }
-  }, []);
+  }, [history, state.documents]);
 
   return (
     <>
