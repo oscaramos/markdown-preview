@@ -1,5 +1,5 @@
 {
-  "importOrder": ["^@mui/material/(.*)$", "^@mui/icons-material/(.*)$", "^@mui/styles/(.*)$", "^react-icons/(.*)$", "^components/(.*)$" ,"^sections/(.*)$", "^[./]"],
+  "importOrder": ["^@mui/material/(.*)$", "^@mui/icons-material/(.*)$", "^@mui/styles/(.*)$", "^react-icons/(.*)$", "^components/(.*)$" ,"^sections/(.*)$", "^ace-builds/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "experimentalBabelParserPluginsList" : ["jsx"]
 }

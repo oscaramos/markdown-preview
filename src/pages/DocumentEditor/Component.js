@@ -11,12 +11,6 @@ import Meta from "components/Meta";
 import { useStore } from "../../store";
 import useStyles from "./styles";
 
-const codeEditorStyle = {
-  width: "100%",
-  height: "90vh",
-  padding: 0,
-};
-
 function DocumentEditor({ match }) {
   const { state, actions } = useStore();
 
@@ -58,8 +52,7 @@ function DocumentEditor({ match }) {
             <CodeEditor
               key={documentId}
               onChangeEditor={onChangeEditor}
-              style={codeEditorStyle}
-              setValue={document.markdownText}
+              defaultValue={document.markdownText}
               themeMode={themeMode}
             />
           </Grid>
