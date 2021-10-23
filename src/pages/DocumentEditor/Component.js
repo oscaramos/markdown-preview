@@ -3,8 +3,6 @@ import Markdown from "react-markdown";
 import { useHistory } from "react-router-dom";
 
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 import CodeEditor from "components/CodeEditor";
 import Layout from "components/Layout";
@@ -21,7 +19,6 @@ const codeEditorStyle = {
 
 function DocumentEditor({ match }) {
   const { state, actions } = useStore();
-  const theme = useTheme();
 
   const classes = useStyles();
 
