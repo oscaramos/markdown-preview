@@ -10,6 +10,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import makeStyles from "@mui/styles/makeStyles";
 
 import CodeEditor from "components/CodeEditor";
+import Layout from "components/Layout";
 import Meta from "components/Meta";
 
 import { useStore } from "../../store";
@@ -24,22 +25,6 @@ const codeEditorStyle = {
 };
 
 const useStylesPage = makeStyles((theme) => ({
-  container: {
-    width: "100%",
-    height: "100%",
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  containerShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
   convertedContainer: {
     width: "100%",
     // height: '100vh',
@@ -90,13 +75,7 @@ function DocumentEditor({ match }) {
   return (
     <>
       <Meta title="Document editor" description="Document editor" />
-      <Grid
-        container
-        direction="row"
-        className={clsx(classes.container, {
-          [classes.containerShift]: openDrawer,
-        })}
-      >
+      <Layout>
         <Grid
           item
           container
@@ -127,7 +106,7 @@ function DocumentEditor({ match }) {
             </Grid>
           )}
         </Grid>
-      </Grid>
+      </Layout>
     </>
   );
 }
