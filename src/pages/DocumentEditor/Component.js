@@ -105,6 +105,7 @@ function Page1(props) {
         >
           <Grid item xs={12} sm={6}>
             <CodeEditor
+              key={documentId}
               onChangeEditor={onChangeEditor}
               style={codeEditorStyle}
               setValue={document.markdownText}
