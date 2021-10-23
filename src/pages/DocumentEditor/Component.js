@@ -15,15 +15,13 @@ import useStyles from "./styles";
 
 const codeEditorStyle = {
   width: "100%",
-  height: "90%",
+  height: "90vh",
   padding: 0,
-  overflowY: "scroll",
 };
 
 function DocumentEditor({ match }) {
   const { state, actions } = useStore();
   const theme = useTheme();
-  const matchXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const classes = useStyles();
 
@@ -67,20 +65,16 @@ function DocumentEditor({ match }) {
               themeMode={themeMode}
             />
           </Grid>
-          {matchXS ? (
-            <></>
-          ) : (
-            <Grid item xs={0} sm={6}>
-              <div
-                className={classes.convertedContainer}
-                style={{
-                  backgroundColor: themeMode === "dark" ? "#44475A" : "#ffffff",
-                }}
-              >
-                <Markdown source={document.markdownText} />
-              </div>
-            </Grid>
-          )}
+          <Grid item xs={12} sm={6}>
+            <div
+              className={classes.convertedContainer}
+              style={{
+                backgroundColor: themeMode === "dark" ? "#44475A" : "#ffffff",
+              }}
+            >
+              <Markdown source={document.markdownText} />
+            </div>
+          </Grid>
         </Grid>
       </Layout>
     </>
