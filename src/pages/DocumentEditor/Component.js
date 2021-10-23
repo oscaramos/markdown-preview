@@ -14,7 +14,7 @@ import Meta from "components/Meta";
 
 import { useStore } from "../../store";
 
-const drawerWidth = 251;
+export const drawerWidth = 251;
 
 const codeEditorStyle = {
   width: "100%",
@@ -57,14 +57,14 @@ const useStylesPage = makeStyles((theme) => ({
   },
 }));
 
-function Page1(props) {
+function DocumentEditor({ match }) {
   const { state, actions } = useStore();
   const theme = useTheme();
   const matchXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const classes = useStylesPage();
 
-  const documentId = props.match.params.docId;
+  const documentId = match.params.docId;
   const document = state.documents.find(
     (document) => document.id === documentId
   );
@@ -132,4 +132,4 @@ function Page1(props) {
   );
 }
 
-export default Page1;
+export default DocumentEditor;
