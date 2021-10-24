@@ -14,7 +14,7 @@ function Welcome() {
   useEffect(() => {
     // Redirect to the first page
     if (state.documents.length > 0) {
-      history.push(`/document/${state.documents[0].id}`);
+      history.replace(`/document/${state.documents[0].id}`);
     }
   }, [history, state.documents]);
 
