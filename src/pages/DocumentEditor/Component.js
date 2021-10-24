@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Markdown from "react-markdown";
 import { useHistory } from "react-router-dom";
 
@@ -32,24 +32,8 @@ function DocumentEditor({ match }) {
 
   const themeMode = state.theme.mode;
 
-  useEffect(() => {
-    let timeoutId;
-
-    if (document) return null;
-    else {
-      timeoutId = setTimeout(() => {
-        history.push("/not-found");
-      }, 2000);
-    }
-
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, [document, history]);
-
   if (!document) {
+    history.push("/not-found");
     return null;
   }
 
