@@ -33,7 +33,7 @@ function DocumentEditor({ match }) {
   const themeMode = state.theme.mode;
 
   if (!document) {
-    history.push("/not-found");
+    history.replace("/not-found");
     return null;
   }
 
