@@ -24,6 +24,12 @@ const sw = {
 };
 
 const documents = {
+  initialize({ state, effects }) {
+    if (!localStorage.getItem("documents")) {
+      effects.document.lsSave(state.documents);
+    }
+  },
+
   setMarkdownText(
     { state, actions, effects },
     { documentId, newDocumentText }
